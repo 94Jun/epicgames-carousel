@@ -1,0 +1,50 @@
+.container {
+  background-color: #333;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.carousel_wrap {
+  width: 80%;
+  margin: 0 auto;
+  height: 80vh;
+  display: flex;
+  gap: 20px;
+}
+.main_img {
+  width: 70%;
+}
+.sub_img_list {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sub_img_item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  text-align: center;
+  justify-content: start;
+  padding: 20px;
+  cursor: pointer;
+  border-radius: 0.5em;
+}
+.sub_img_item:hover {
+  background-color: #888;
+}
+.main_img > img {
+  width: 100%;
+  height: 100%;
+}
+.sub_img_item > img {
+  width: 20%;
+  height: 80%;
+  margin: 0 20px;
+}
+.sub_img_item span {
+  color: white;
+}
