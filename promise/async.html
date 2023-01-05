@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>async</h1>
+    <script>
+      async function hello() {}
+      console.log(hello());
+      //async 함수는 자동적으로 promise를 반환
+
+      const hi = async () => {};
+      //async 화살표 함수의 형태
+
+      const sing = async () => {
+        return "LA LA LA LA";
+      };
+      sing().then((data) => {
+        console.log("Promise resolve with", data);
+      });
+
+      const song = async () => {
+        throw "Oh no! problem";
+        return "LA LA LA LA";
+      };
+      //async 함수에 오류가 있는 경우 promise의 reject 실행(throw로 정의)
+      song()
+        .then((data) => {
+          console.log("Promise resolve with", data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    </script>
+  </body>
+</html>

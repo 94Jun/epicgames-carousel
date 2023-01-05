@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>await</h1>
+    <script>
+      const changeColor = (color, delay) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            document.body.style.backgroundColor = color;
+            resolve();
+          }, delay);
+        });
+      };
+
+      const rainbow = async () => {
+        await changeColor("red", 1000);
+        await changeColor("orange", 1000);
+        await changeColor("yellow", 1000);
+        await changeColor("green", 1000);
+        await changeColor("blue", 1000);
+        await changeColor("navy", 1000);
+        await changeColor("purple", 1000);
+      };
+      //async 함수 안에 await 키워드를 통해 비동기 함수로 실행 가능(promise 결과를 낼 때 까지 대기)
+      rainbow();
+    </script>
+  </body>
+</html>

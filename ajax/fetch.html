@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>fetch를 사용한 Json 데이터 활용</h1>
+    <script>
+      fetch("https://swapi.dev/api/people/1") //fetch사용 시 promise를 반환
+        .then((response) => {
+          console.log(response);
+          return response.json();
+        }) // response.json()도 promise를 반환
+        .then((data) => {
+          console.log(data);
+          //반환된 response를 json으로 변환
+          return fetch("https://swapi.dev/api/people/2");
+          //연속해서 fetch를 사용하더라도 중첩없이 가능
+        })
+        .then((response) => {
+          console.log(response);
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
+      //fetch와 then catch를 사용한 구문
+
+      const getStarWarsPeople = async () => {
+        try {
+          const response1 = await fetch("https://swapi.dev/api/people/3");
+          console.log(response1);
+          const data1 = await response1.json();
+          console.log(data1);
+          const response2 = await fetch("https://swapi.dev/api/people/4");
+          console.log(response2);
+          const data2 = await response2.json();
+          console.log(data2);
+        } catch (err) {
+          console.log("err", err);
+        }
+      };
+      getStarWarsPeople();
+      //fetch와 async await을 사용한 구문 + try/catch
+    </script>
+  </body>
+</html>

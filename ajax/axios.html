@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>axios를 사용한 json 데이터 활용</h1>
+    <button id="dadjokebtn">getdadjoke</button>
+    <p id="dadjoke"></p>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      axios.get("https://swapi.dev/api/people/1").then((response) => {
+        console.log(response);
+        //fetch와 달리 response.json() 없이도 바로 데이터에 접근 가능
+      });
+
+      const getStarWarsPeople = async (id) => {
+        const response = await axios.get(`https://swapi.dev/api/people/${id}`);
+        console.log(response.data);
+      };
+      getStarWarsPeople(2);
+      getStarWarsPeople(3);
+
+      const getDadJoke = async () => {
+        const config = { headers: { Accept: "application/json" } };
+        const response = await axios.get("https://icanhazdadjoke.com/", config);
+        console.log(response.data.joke);
+        document.querySelector("#dadjoke").innerHTML = response.data.joke;
+      };
+      getDadJoke();
+      document
+        .querySelector("#dadjokebtn")
+        .addEventListener("click", getDadJoke);
+    </script>
+  </body>
+</html>
